@@ -18,10 +18,12 @@ def longest_run(mylist, key):
     maxRun = 0
 
     for e in mylist:
-        if e==key:
+        if (e==key):
             curRun += 1
-        else:
+        elif (maxRun<curRun):
             maxRun = curRun
+            curRun = 0
+        else:
             curRun = 0
     return maxRun
 
@@ -38,13 +40,28 @@ class Result:
         return('longest_size=%d left_size=%d right_size=%d is_entire_range=%s' %
               (self.longest_size, self.left_size, self.right_size, self.is_entire_range))
     
-    
+   
 def longest_run_recursive(mylist, key):
-    mid = mylist//2
+    # Base Case
+    if (len(mylist) == 1):
+        if (mylist[0]==key):
+            return 1
+        else:
+            return 0
+
+    # Recursive Case
+    mid = len(mylist)//2 # This is as far as I got, though not for lack of trying
+
+    # This is roughly what the recursion would look like, I could not figure out the last two parameters:
+    #res = Result(longest_run_recursive(mylist[:mid],key), longest_run_recursive(mylist[mid:],key), None, 0)
+
+    # This is how it would end:
+    #return res.longest_size
 
 
 ## Feel free to add your own tests here.
 def test_longest_run():
     assert longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3
+    assert longest_run_recursive([2,12,12,8,12,12,12,0,12,1], 12) == 3
 
 
