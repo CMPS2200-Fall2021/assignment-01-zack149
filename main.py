@@ -101,9 +101,10 @@ def test_longest_run():
     assert longest_run_recursive([3,1,3], 3) == 1
     assert longest_run_recursive([5,5,5,5], 5) == 4
 
-
+"""
 def main():
     test_longest_run()
     return
 
 main()
+"""
